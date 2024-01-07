@@ -63,7 +63,7 @@ def configure(app):
     # Register content formats
 
     # create new Quokka Module with its views
-    module = QuokkaModule(__name__.replace('.','_'))
+    module = QuokkaModule(__name__.replace('.', '_'))
     ext = app.config.get("CONTENT_EXTENSION", "html")
 
     extensions = list(app.config.get('CONTENT_EXTENSION_MAP', {}).keys())
@@ -77,7 +77,7 @@ def configure(app):
     module.add_url_rule(f'/index.{ext}',
                         view_func=ArticleListView.as_view('indexnamed'))
     # handle /2/
-    module.add_url_rule(f'/<int:page_number>/',
+    module.add_url_rule('/<int:page_number>/',
                         view_func=ArticleListView.as_view('indexpag'))
     # handle /2.html
     module.add_url_rule(f'/<int:page_number>.{ext}',
@@ -95,7 +95,7 @@ def configure(app):
 
     # AUTHORS
     # handle /authors/
-    module.add_url_rule(f'/authors/',
+    module.add_url_rule('/authors/',
                         view_func=AuthorListView.as_view('authors'))
     # handle /authors/index.html
     module.add_url_rule(f'/authors/index.{ext}',
@@ -123,7 +123,7 @@ def configure(app):
 
     # TAGS
     # handle /tags/
-    module.add_url_rule(f'/tags/',
+    module.add_url_rule('/tags/',
                         view_func=TagListView.as_view('tags'))
     # handle /tags/index.html
     module.add_url_rule(f'/tags/index.{ext}',
@@ -164,7 +164,7 @@ def configure(app):
 
     # CATEGORIES
     # handle /categories/
-    module.add_url_rule(f'/categories/',
+    module.add_url_rule('/categories/',
                         view_func=CategoryListView.as_view('categories'))
     # handle /categories/index.html
     module.add_url_rule(f'/categories/index.{ext}',
@@ -177,7 +177,7 @@ def configure(app):
     module.add_url_rule(f'/<path:category>/index.{ext}',
                         view_func=ArticleListView.as_view('catnamed'))
     # handle /blog/subcategory/2/
-    module.add_url_rule(f'/<path:category>/<int:page_number>/',
+    module.add_url_rule('/<path:category>/<int:page_number>/',
                         view_func=ArticleListView.as_view('catpag'))
     # handle /blog/subcategory/2.html
     module.add_url_rule(f'/<path:category>/<int:page_number>.{ext}',

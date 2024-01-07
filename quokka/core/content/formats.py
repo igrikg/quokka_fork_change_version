@@ -3,7 +3,7 @@ import getpass
 import json
 from .parsers import markdown
 from flask import current_app as app
-from markupsafe import Markup 
+from markupsafe import Markup
 from flask_admin.helpers import get_form_data
 from flask_admin.model.fields import InlineFieldList, InlineFormField
 from quokka.admin.forms import Form, fields, rules, validators

@@ -36,7 +36,7 @@ def with_app(f):
                 f'Error: {e}'
             )
             return
-        return f(app=app, *args, **kwargs)
+        return f(app, *args, **kwargs)
     return decorator
 
 

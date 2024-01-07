@@ -19,7 +19,6 @@ class QuokkaAdmin(Admin):
             )
         """
         _view = view or ModelView
-        
         if not identifier:
             if isinstance(model, TinyMongoCollection):
                 identifier = '.'.join(

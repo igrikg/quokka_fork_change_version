@@ -23,12 +23,16 @@
 """
 from datetime import datetime
 
-
 # from werkzeug.utils import escape
 from werkzeug.wrappers import Response
 
-implements_to_string = lambda x: x
-string_types =(str,)
+
+def implements_to_string(x):
+    return x
+
+
+string_types = (str,)
+
 
 def escape(x):
     return x
@@ -41,7 +45,7 @@ def _make_text_block(name, content, content_type=None):
     """Helper function for the builder that creates an XML text block."""
     if content_type == 'xhtml':
         return u'<%s type="xhtml"><div xmlns="%s">%s</div></%s>\n' % \
-               (name, XHTML_NAMESPACE, content, name)
+            (name, XHTML_NAMESPACE, content, name)
     if not content_type:
         return u'<%s>%s</%s>\n' % (name, escape(content), name)
     return u'<%s type="%s">%s</%s>\n' % (name, content_type,
@@ -124,7 +128,7 @@ class AtomFeed(object):
         self.entries = entries and list(entries) or []
 
         if not hasattr(self.author, '__iter__') \
-           or isinstance(self.author, string_types + (dict,)):
+                or isinstance(self.author, string_types + (dict,)):
             self.author = [self.author]
         for i, author in enumerate(self.author):
             if not isinstance(author, dict):
@@ -290,7 +294,7 @@ class FeedEntry(object):
         self.xml_base = kwargs.get('xml_base', feed_url)
 
         if not hasattr(self.author, '__iter__') \
-           or isinstance(self.author, string_types + (dict,)):
+                or isinstance(self.author, string_types + (dict,)):
             self.author = [self.author]
         for i, author in enumerate(self.author):
             if not isinstance(author, dict):
@@ -320,7 +324,7 @@ class FeedEntry(object):
         yield u'  <updated>%s</updated>\n' % format_iso8601(self.updated)
         if self.published:
             yield u'  <published>%s</published>\n' % \
-                  format_iso8601(self.published)
+                format_iso8601(self.published)
         if self.url:
             yield u'  <link href="%s" />\n' % escape(self.url)
         for author in self.author:
