@@ -41,7 +41,7 @@ tree:
 
 create_env:
 	@rm -rf venv
-	@python3.6 -m venv venv
+	@python3.10 -m venv venv
 
 devserver:
 	$(info "Running quokka project template...")
@@ -50,8 +50,6 @@ devserver:
 shell:
 	$(info "Running quokka shell...")
 	@cd quokka/project_template; quokka shell
-
-
 adduser:
 	$(info "Running quokka adduser...")
 	@cd quokka/project_template; quokka adduser

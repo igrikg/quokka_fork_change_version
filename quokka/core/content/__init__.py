@@ -63,7 +63,7 @@ def configure(app):
     # Register content formats
 
     # create new Quokka Module with its views
-    module = QuokkaModule(__name__)
+    module = QuokkaModule(__name__.replace('.','_'))
     ext = app.config.get("CONTENT_EXTENSION", "html")
 
     extensions = list(app.config.get('CONTENT_EXTENSION_MAP', {}).keys())

@@ -57,5 +57,5 @@ class ModelView(CloneAction, PublishAction,
     def _get_endpoint(self, endpoint):
         if not endpoint:
             endpoint = self.__class__.__name__.lower()
-        endpoint = f'{self.__module__}.{endpoint}'
+        endpoint = f'{self.__module__}_{endpoint}'.replace('.','_')
         return endpoint

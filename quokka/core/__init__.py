@@ -2,6 +2,7 @@
 from inspect import getargspec
 import sys
 import import_string
+import quokka.core.context_processors
 
 
 def configure_extension(name, **kwargs):

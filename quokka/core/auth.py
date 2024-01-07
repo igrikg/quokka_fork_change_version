@@ -1,5 +1,6 @@
 import getpass
-from flask import current_app, url_for, Markup
+from flask import current_app, url_for
+from markupsafe import Markup
 from flask_htmlbuilder.htmlbuilder import html
 from quokka.admin.actions import UserProfileBlockAction
 from quokka.admin.views import ModelView
@@ -26,12 +27,12 @@ def create_user(**data):
 class UserForm(Form):
     username = fields.StringField(
         'Username',
-        [validators.required()],
+        [validators.DataRequired()],
         description='used as login'
     )
     fullname = fields.StringField(
         'Full Name',
-        [validators.required()],
+        [validators.DataRequired()],
         description='shows in author page'
     )
     email = fields.StringField('Email')

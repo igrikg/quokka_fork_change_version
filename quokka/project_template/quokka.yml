@@ -142,7 +142,6 @@ THEME:
 
     CONTENT_VAR_MAP:
       author_avatar: AVATAR
-      banner: BANNER
       banner: OPEN_GRAPH_IMAGE
       author: AUTHOR
       header_color: BASE_COLOR
@@ -352,7 +351,6 @@ THEME_MALT:
     CONTENT_VAR_MAP:
       ## attributes taken from article/page and its export name
       author_avatar: AVATAR
-      banner: BANNER
       banner: OPEN_GRAPH_IMAGE
       author: AUTHOR
       header_color: MALT_BASE_COLOR
@@ -374,7 +372,6 @@ THEME_OCTOPRESS:
     TWITTER_TWEET_BUTTON: true
     TWITTER_FOLLOW_BUTTON: true
     DISPLAY_CATEGORIES: true
-    DISPLAY_TAGS: true
     DISPLAY_FEEDS: true
     AUTHOR_ABOUT: Foo Bar
     HEADER_COVER: http://lorempixel.com/1200/200/abstract/
@@ -456,7 +453,7 @@ QUOKKA:
   ## Use EXTRA_EXTENSIONS for thirty party extensions
   CORE_EXTENSIONS:
     # - quokka.core.regex_url_support.Regex
-    - flask_babelex.Babel
+    - flask_babel.Babel
     - quokka.core.logger.configure
     - quokka.core.db.QuokkaDB
     - quokka.admin.configure_admin

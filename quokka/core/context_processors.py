@@ -1,8 +1,8 @@
-from .content.models import make_model, Category
-from quokka.utils.blocks import build_menu, get_text_block, get_quokka_home
 
 
 def configure(app):
+    from .content.models import make_model, Category
+    from quokka.utils.blocks import build_menu, get_text_block, get_quokka_home
 
     # add context processors
     @app.context_processor

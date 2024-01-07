@@ -2,7 +2,8 @@ import datetime as dt
 import getpass
 import json
 from .parsers import markdown
-from flask import current_app as app, Markup
+from flask import current_app as app
+from markupsafe import Markup 
 from flask_admin.helpers import get_form_data
 from flask_admin.model.fields import InlineFieldList, InlineFormField
 from quokka.admin.forms import Form, fields, rules, validators
@@ -163,7 +164,7 @@ def get_default_language():
 class BaseForm(Form):
 
     title = fields.StringField(
-        'Title', [validators.required()],
+        'Title', [validators.DataRequired()],
         description='TIP: `My Title` turns to`my-title.html` url'
     )
     summary = fields.TextAreaField('Summary')
@@ -181,7 +182,7 @@ class BaseForm(Form):
     )
     authors = fields.Select2TagsField(
         'Authors',
-        [validators.required()],
+        [validators.DataRequired()],
         save_as_list=True,
         render_kw=get_authors_kw,
         default=get_default_author
@@ -193,12 +194,12 @@ class CreateForm(BaseForm):
     # TODO: Make content_type an optional field by ASK_CONTENT_TYPE config
     # content_type = fields.SelectField(
     #     'Type',
-    #     [validators.required()],
+    #     [validators.DataRequired()],
     #     choices=[('article', 'Article'), ('page', 'Page')]
     # )
     content_format = fields.SmartSelect2Field(
         'Format',
-        [validators.required()],
+        [validators.DataRequired()],
         choices=get_content_format_choices,
         # TODO: remove this `allow_blank` once select2 submit on enter is fix
         allow_blank=True
@@ -207,11 +208,11 @@ class CreateForm(BaseForm):
 
 class CustomVariablesForm(Form):
     key = fields.StringField(
-        'Key', [validators.required()],
+        'Key', [validators.DataRequired()],
         description='lower_snake_case'
     )
     value = fields.StringField(
-        'Value', [validators.required()],
+        'Value', [validators.DataRequired()],
         description=(
             'Optionally define format using @int,@float,@bool,@json '
             'ex:`@float 42.1` or `@int 42` or `@bool false` '
@@ -223,7 +224,7 @@ class CustomVariablesForm(Form):
 class BlockItemForm(Form):
     item = fields.Select2TagsField(
         'Item',
-        [validators.required(),
+        [validators.DataRequired(),
          validators.CallableValidator(validate_block_item)],
         save_as_list=False,
         render_kw=get_block_item_kw,
@@ -236,7 +237,7 @@ class BlockItemForm(Form):
     order = fields.IntegerField('Order', default=0)
     item_type = fields.SmartSelect2Field(
         'Type',
-        [validators.required()],
+        [validators.DataRequired()],
         default='link',
         choices=lambda: [
             item for item in
@@ -275,7 +276,7 @@ class BaseEditForm(BaseForm):
     )
     date = fields.DateTimeField(
         'Date',
-        [validators.required()],
+        [validators.DataRequired()],
         default=dt.datetime.now
     )
     modified = fields.HiddenField('Modified')

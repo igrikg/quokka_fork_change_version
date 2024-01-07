@@ -4,7 +4,7 @@ import random
 from copy import deepcopy
 from datetime import datetime
 
-from flask import Markup
+from markupsafe import Markup
 from flask import Response, current_app, flash, redirect, url_for
 from flask_admin.actions import action
 

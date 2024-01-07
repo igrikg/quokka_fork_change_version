@@ -1,4 +1,5 @@
 import mistune
+from mistune.renderers.markdown import MarkdownRenderer
 from pygments import highlight
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import html
@@ -32,7 +33,7 @@ class HighlightMixin(object):
         return block_code(text, lang, inlinestyles, linenos)
 
 
-class HighlightRenderer(HighlightMixin, mistune.Renderer):
+class HighlightRenderer(HighlightMixin, MarkdownRenderer):
     pass
     # def block_code(self, code, lang):
     #     if not lang:

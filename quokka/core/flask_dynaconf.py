@@ -2,7 +2,8 @@
 """This core extension cannot be loaded from settings.yml
 should be loaded directly in create_app"""
 
-from flask import Markup
+#from flask import Markup
+from markupsafe import Markup
 from dynaconf.contrib import FlaskDynaconf
 from dynaconf.utils import DynaconfDict
 from dynaconf.loaders import yaml_loader, env_loader, default_loader
